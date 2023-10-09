@@ -16,6 +16,7 @@ public class Phrase {
 
     // CONSTRUCTORS
     public Phrase() {
+        System.out.println("Lazy init");
     }
 
     public Phrase(String phraseText) {

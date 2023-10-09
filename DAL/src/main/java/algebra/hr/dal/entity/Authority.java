@@ -23,6 +23,7 @@ public class Authority {
 
     //CONSTRUCTORS
     public Authority() {
+        System.out.println("Lazy init");
     }
 
     public Authority(User user, Role authority) {
