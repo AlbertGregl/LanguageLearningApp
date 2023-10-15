@@ -11,28 +11,24 @@ public class TranslationWord {
     @Column(name = "TranslationWordID", updatable = false, nullable = false)
     private int translationWordID;
 
-    @ManyToOne()
-    @JoinColumn(name = "WordID", nullable = false)
-    private Word word;
+    @ManyToOne
+    @JoinColumn(name = "BaseWordID", nullable = false)
+    private Word baseWord;
 
-    @ManyToOne()
-    @JoinColumn(name = "LanguageID", nullable = false)
-    private Language language;
-
-    //the longest word in the world is Sanskrit 195-chars :)
-    @Column(name = "TranslatedWord", nullable = false, length = 255)
-    private String translatedWord;
+    @ManyToOne
+    @JoinColumn(name = "TranslatedWordID", nullable = false)
+    private Word translatedWord;
 
     // CONTRUCTOR
     public TranslationWord() {}
 
-    public TranslationWord(Word word, Language language, String translatedWord) {
-        this.word = word;
-        this.language = language;
+    public TranslationWord(Word baseWord, Word translatedWord) {
+        this.baseWord = baseWord;
         this.translatedWord = translatedWord;
     }
 
     // GET AND SET
+
     public int getTranslationWordID() {
         return translationWordID;
     }
@@ -41,27 +37,19 @@ public class TranslationWord {
         this.translationWordID = translationWordID;
     }
 
-    public Word getWord() {
-        return word;
+    public Word getBaseWord() {
+        return baseWord;
     }
 
-    public void setWord(Word word) {
-        this.word = word;
+    public void setBaseWord(Word baseWord) {
+        this.baseWord = baseWord;
     }
 
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public String getTranslatedWord() {
+    public Word getTranslatedWord() {
         return translatedWord;
     }
 
-    public void setTranslatedWord(String translatedWord) {
+    public void setTranslatedWord(Word translatedWord) {
         this.translatedWord = translatedWord;
     }
 
@@ -69,10 +57,8 @@ public class TranslationWord {
     public String toString() {
         return "TranslationWord{" +
                 "translationWordID=" + translationWordID +
-                ", word=" + word +
-                ", language=" + language +
-                ", translatedWord='" + translatedWord + '\'' +
+                ", baseWord=" + baseWord +
+                ", translatedWord=" + translatedWord +
                 '}';
     }
-
 }

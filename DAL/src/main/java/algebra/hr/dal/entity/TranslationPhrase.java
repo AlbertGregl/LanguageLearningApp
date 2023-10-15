@@ -10,71 +10,56 @@ public class TranslationPhrase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TranslationPhraseID", updatable = false, nullable = false)
-    private int translationPhraseID;
+    @Column(name = "PhraseTranslationID", updatable = false, nullable = false)
+    private int phraseTranslationID;
 
     @ManyToOne
-    @JoinColumn(name = "PhraseID", nullable = false)
-    private Phrase phrase;
+    @JoinColumn(name = "BasePhraseID", nullable = false)
+    private Phrase basePhrase;
 
     @ManyToOne
-    @JoinColumn(name = "LanguageID", nullable = false)
-    private Language language;
-
-    @Column(name = "TranslatedPhrase", nullable = false, length = 1024)
-    private String translatedPhrase;
+    @JoinColumn(name = "TranslatedPhraseID", nullable = false)
+    private Phrase translatedPhrase;
 
     // CONSTRUCTORS
     public TranslationPhrase() {
     }
 
-    public TranslationPhrase(Phrase phrase, Language language, String translatedPhrase) {
-        this.phrase = phrase;
-        this.language = language;
+    public TranslationPhrase(Phrase basePhrase, Phrase translatedPhrase) {
+        this.basePhrase = basePhrase;
         this.translatedPhrase = translatedPhrase;
     }
 
-    // GET AND SET
-    public int getTranslationPhraseID() {
-        return translationPhraseID;
+    public int getPhraseTranslationID() {
+        return phraseTranslationID;
     }
 
-    public void setTranslationPhraseID(int translationPhraseID) {
-        this.translationPhraseID = translationPhraseID;
+    public void setPhraseTranslationID(int phraseTranslationID) {
+        this.phraseTranslationID = phraseTranslationID;
     }
 
-    public Phrase getPhrase() {
-        return phrase;
+    public Phrase getBasePhrase() {
+        return basePhrase;
     }
 
-    public void setPhrase(Phrase phrase) {
-        this.phrase = phrase;
+    public void setBasePhrase(Phrase basePhrase) {
+        this.basePhrase = basePhrase;
     }
 
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public String getTranslatedPhrase() {
+    public Phrase getTranslatedPhrase() {
         return translatedPhrase;
     }
 
-    public void setTranslatedPhrase(String translatedPhrase) {
+    public void setTranslatedPhrase(Phrase translatedPhrase) {
         this.translatedPhrase = translatedPhrase;
     }
 
-    // Optional: toString, equals, and hashCode methods
     @Override
     public String toString() {
         return "TranslationPhrase{" +
-                "translationPhraseID=" + translationPhraseID +
-                ", phrase=" + phrase +
-                ", language=" + language +
-                ", translatedPhrase='" + translatedPhrase + '\'' +
+                "phraseTranslationID=" + phraseTranslationID +
+                ", basePhrase=" + basePhrase +
+                ", translatedPhrase=" + translatedPhrase +
                 '}';
     }
 }

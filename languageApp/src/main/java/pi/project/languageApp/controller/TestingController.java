@@ -42,13 +42,25 @@ public class TestingController {
     public String listLanguages(Model theModel) {
         logger.info("Fetching list of languages...");
         logger.info("Fetching list of phrases...");
-        //_languageService.save(new Language("Albanian"));
-        //_phraseService.save(new Phrase("Laku noc"));
 
-        //Language lang = _languageService.findById(1);
-        //Phrase phrase = _phraseService.findById(1);
+        // Create languages
+        Language croatian = new Language("Croatian");
+        Language english = new Language("English");
 
-        //_translationPhraseService.save(new TranslationPhrase(phrase,lang,"Guten tag"));
+        _languageService.save(croatian);
+        _languageService.save(english);
+
+        // Create phrases
+        Phrase croatianPhrase = new Phrase("Dobar dan", croatian);
+        Phrase englishPhrase = new Phrase("Good day", english);
+
+        _phraseService.save(croatianPhrase);
+        _phraseService.save(englishPhrase);
+
+        // Create translation
+        TranslationPhrase translation = new TranslationPhrase(croatianPhrase, englishPhrase);
+        _translationPhraseService.save(translation);
+
 
         List<Language> languages = _languageService.findAll();
         List<Phrase> phrases = _phraseService.findAll();

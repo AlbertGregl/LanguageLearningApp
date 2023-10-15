@@ -14,13 +14,18 @@ public class Phrase {
     @Column(name = "PhraseText", nullable = false, columnDefinition = "NVARCHAR(1024)")
     private String phraseText;
 
+    @ManyToOne
+    @JoinColumn(name = "LanguageID", nullable = false)
+    private Language language;  //each phrase is associated with a language
+
     // CONSTRUCTORS
     public Phrase() {
         System.out.println("Lazy init");
     }
 
-    public Phrase(String phraseText) {
+    public Phrase(String phraseText, Language language) {
         this.phraseText = phraseText;
+        this.language = language;
     }
 
     // GET AND SET
@@ -40,11 +45,20 @@ public class Phrase {
         this.phraseText = phraseText;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     @Override
     public String toString() {
         return "Phrase{" +
                 "phraseID=" + phraseID +
                 ", phraseText='" + phraseText + '\'' +
+                ", language=" + language +
                 '}';
     }
 }

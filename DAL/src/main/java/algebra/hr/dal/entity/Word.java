@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Words")
 public class Word {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "WordID", updatable = false, nullable = false)
@@ -14,16 +13,19 @@ public class Word {
     @Column(name = "WordText", nullable = false, length = 255)
     private String wordText;
 
+    @ManyToOne
+    @JoinColumn(name = "LanguageID", nullable = false)
+    private Language language;  //each word is associated with a language
+
     // CONTRUCTORS
     public Word() {}
 
-    public Word(String wordText) {
+    public Word(String wordText, Language language) {
         this.wordText = wordText;
+        this.language = language;
     }
 
     // GET AND SET
-
-
     public int getWordID() {
         return wordID;
     }
@@ -40,11 +42,20 @@ public class Word {
         this.wordText = wordText;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     @Override
     public String toString() {
         return "Word{" +
                 "wordID=" + wordID +
                 ", wordText='" + wordText + '\'' +
+                ", language=" + language +
                 '}';
     }
 }

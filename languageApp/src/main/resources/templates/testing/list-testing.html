@@ -68,6 +68,9 @@
                         <p class="card-text">
                             <span th:text="${phrase.phraseID}">Phrase ID</span>
                         </p>
+                        <p class="card-text">
+                            <span th:text="${phrase.language.languageName}">Language Name</span>
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -84,13 +87,16 @@
                 <ul class="list-group list-group-flush">
                     <li th:each="translation : ${translationPhrases}" class="list-group-item">
                         <!-- Translation details -->
-                        <h5 class="card-title" th:text="${translation.phrase.phraseText}">Phrase Text</h5>
+                        <h5 class="card-title" th:text="${translation.basePhrase.phraseText}"> Base Phrase Text</h5>
                         <p class="card-text">
-                            <span th:text="${translation.language.languageName}">Language</span>
+                            <span th:text="${translation.translatedPhrase.phraseText}">Translated Phrase</span>
+                        </p>
+                        <p class="card-text">
+                            <span th:text="${translation.basePhrase.language.languageName}">Base Phrase Language</span>
                         </p>
 
                         <p class="card-text">
-                            <span th:text="${translation.translatedPhrase}">Translation</span>
+                            <span th:text="${translation.translatedPhrase.language.languageName}">Translated Phrase Language</span>
                         </p>
                     </li>
                 </ul>
