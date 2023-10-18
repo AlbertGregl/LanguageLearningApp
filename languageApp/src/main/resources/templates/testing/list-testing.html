@@ -98,6 +98,28 @@
                         <p class="card-text">
                             <span th:text="${translation.translatedPhrase.language.languageName}">Translated Phrase Language</span>
                         </p>
+
+                        <p class="card-text">
+                            <span th:text="${translation.phraseTranslationID}">Translated Phrase ID</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="width: 100%;"> <!-- set the card width to 80% -->
+            <!-- Card Header -->
+            <h5 class="card-header">Translations</h5>
+
+            <div class="card-body">
+                <!-- Loop over each Translation in the phrase list -->
+                <ul class="list-group list-group-flush">
+                    <li th:each="task : ${taskPhrases}" class="list-group-item">
+                        <!-- Translation details -->
+                        <h5 class="card-title" th:text="${task.taskText}"> Base Phrase Text</h5>
+                        <p class="card-text">
+                            <span th:text="${task.translationPhrase.translatedPhrase.phraseText}">Translated Phrase</span>
+                        </p>
                     </li>
                 </ul>
             </div>
