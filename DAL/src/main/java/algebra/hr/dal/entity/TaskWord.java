@@ -13,6 +13,11 @@ public class TaskWord extends Task{
         super(taskType, quiz, taskText);
     }
 
+    public TaskWord(TaskType taskType, Quiz quiz, String taskText, TranslationWord translationWord) {
+        super(taskType, quiz, taskText);
+        this.translationWord = translationWord;
+    }
+
     @ManyToOne
     @JoinColumn(name = "TranslationWordID", nullable = false)
     private TranslationWord translationWord;

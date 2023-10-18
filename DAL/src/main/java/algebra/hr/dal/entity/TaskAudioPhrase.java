@@ -9,6 +9,11 @@ public class TaskAudioPhrase extends Task{
         super(taskType, quiz, taskText);
     }
 
+    public TaskAudioPhrase(TaskType taskType, Quiz quiz, String taskText, AudioPhrase audiophrase) {
+        super(taskType, quiz, taskText);
+        this.audiophrase = audiophrase;
+    }
+
     @ManyToOne
     @JoinColumn(name = "AudioPhraseID", nullable = false)
     private AudioPhrase audiophrase;
