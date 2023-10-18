@@ -1,17 +1,16 @@
 package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.TaskType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "TaskAudioWord")
 public class TaskAudioWord extends Task{
     public TaskAudioWord(TaskType taskType, Quiz quiz, String taskText) {
         super(taskType, quiz, taskText);
-    }
-
-    public TaskAudioWord(TaskType taskType, Quiz quiz, String taskText, AudioWord audioWord) {
-        super(taskType, quiz, taskText);
-        this.audioWord = audioWord;
     }
 
     @ManyToOne

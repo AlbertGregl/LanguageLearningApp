@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "TranslationPhrase")
 public class TranslationPhrase {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PhraseTranslationID", updatable = false, nullable = false)

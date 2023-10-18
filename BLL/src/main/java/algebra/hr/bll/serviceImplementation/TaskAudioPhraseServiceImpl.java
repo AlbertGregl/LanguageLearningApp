@@ -4,10 +4,12 @@ import algebra.hr.bll.service.TaskAudioPhraseService;
 import algebra.hr.dal.entity.TaskAudioPhrase;
 import algebra.hr.dal.repository.TaskAudioPhraseRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskAudioPhraseServiceImpl implements TaskAudioPhraseService {
     private final TaskAudioPhraseRepository _taskAudioPhraseRepository;
 

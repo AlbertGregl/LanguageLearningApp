@@ -4,10 +4,12 @@ import algebra.hr.bll.service.AudioPhraseService;
 import algebra.hr.dal.entity.AudioPhrase;
 import algebra.hr.dal.repository.AudioPhraseRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AudioPhraseServiceImpl implements AudioPhraseService {
     private final AudioPhraseRepository _audioPhraseRepository;
 

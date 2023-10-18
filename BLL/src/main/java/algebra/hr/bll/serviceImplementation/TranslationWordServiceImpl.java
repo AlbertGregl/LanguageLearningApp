@@ -4,10 +4,12 @@ import algebra.hr.bll.service.TranslationWordService;
 import algebra.hr.dal.entity.TranslationWord;
 import algebra.hr.dal.repository.TranslationWordRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TranslationWordServiceImpl implements TranslationWordService {
     private final TranslationWordRepository _translationWordRepository;
     public TranslationWordServiceImpl(TranslationWordRepository translationWordRepository) {
