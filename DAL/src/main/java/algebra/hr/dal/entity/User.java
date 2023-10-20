@@ -18,24 +18,22 @@ public class User {
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
-    //**************************************************************************
-    //Other properties
-    @Column(name = "score", nullable = false)
-    private int score;
-
     //https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Authority> authorities = new HashSet<>();
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private StudentProgress studentProgress;
+
 
     //CONSTRUCTORS
     public User() {
     }
 
-    public User(String username, String password, boolean enabled, int score) {
+    public User(String username, String password, boolean enabled) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
-        this.score = score;
     }
 
     //GET AND SET
@@ -63,14 +61,6 @@ public class User {
         this.enabled = enabled;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public Set<Authority> getAuthorities() {
         return authorities;
     }
@@ -85,7 +75,6 @@ public class User {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
-                ", score=" + score +
                 ", authorities=" + authorities +
                 '}';
     }
