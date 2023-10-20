@@ -6,11 +6,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TaskAudioWord")
 public class TaskAudioWord extends Task{
-    public TaskAudioWord(TaskType taskType, Quiz quiz, String taskText) {
-        super(taskType, quiz, taskText);
+    public TaskAudioWord() {
+    }
+
+    public TaskAudioWord(TaskType taskType, List<Quiz> quizzes, String taskText, AudioWord audioWord) {
+        super(taskType, quizzes, taskText);
+        this.audioWord = audioWord;
     }
 
     @ManyToOne

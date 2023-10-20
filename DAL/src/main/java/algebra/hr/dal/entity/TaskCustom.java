@@ -5,11 +5,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TaskCustom")
 public class TaskCustom extends Task{
-    public TaskCustom(TaskType taskType, Quiz quiz, String taskText) {
-        super(taskType, quiz, taskText);
+    public TaskCustom() {
+    }
+
+    public TaskCustom(TaskType taskType, List<Quiz> quizzes, String taskText, String taskAnswer) {
+        super(taskType, quizzes, taskText);
+        this.taskAnswer = taskAnswer;
     }
 
     @Column(name = "TaskAnswer", nullable = false, length = 1024)

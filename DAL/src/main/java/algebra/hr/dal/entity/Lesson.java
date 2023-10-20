@@ -1,6 +1,7 @@
 package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.Difficulty;
+import algebra.hr.dal.enums.LessonCode;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public class Lesson {
     @Column(name = "LessonID", updatable = false, nullable = false)
     private int lessonID;
 
-    @ManyToOne
-    @JoinColumn(name = "LanguageID", nullable = false)
-    private Language language;
+    @Enumerated(EnumType.STRING) //annotation means that the enum will be persisted as a String !
+    @Column(name = "LessonCode", length = 50, nullable = false)
+    private LessonCode lessonCode;
 
     @Enumerated(EnumType.STRING) //annotation means that the enum will be persisted as a String !
     @Column(name = "Difficulty", length = 50, nullable = false)
@@ -24,8 +25,11 @@ public class Lesson {
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Quiz> quizzes;
 
-    public Lesson(Language language, Difficulty difficulty, List<Quiz> quizzes) {
-        this.language = language;
+    public Lesson() {
+    }
+
+    public Lesson(LessonCode lessonCode, Difficulty difficulty, List<Quiz> quizzes) {
+        this.lessonCode = lessonCode;
         this.difficulty = difficulty;
         this.quizzes = quizzes;
     }
@@ -38,12 +42,12 @@ public class Lesson {
         this.lessonID = lessonID;
     }
 
-    public Language getLanguage() {
-        return language;
+    public LessonCode getLessonCode() {
+        return lessonCode;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setLessonCode(LessonCode lessonCode) {
+        this.lessonCode = lessonCode;
     }
 
     public Difficulty getDifficulty() {
@@ -66,7 +70,7 @@ public class Lesson {
     public String toString() {
         return "Lesson{" +
                 "lessonID=" + lessonID +
-                ", language=" + language +
+                ", lessonCode=" + lessonCode +
                 ", difficulty=" + difficulty +
                 ", quizzes=" + quizzes +
                 '}';

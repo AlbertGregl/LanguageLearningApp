@@ -8,10 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "TaskCustomMC")
 public class TaskCustomMC extends Task{
-    public TaskCustomMC(TaskType taskType, Quiz quiz, String taskText) {
-        super(taskType, quiz, taskText);
-    }
-
     @Column(name = "Answer", nullable = false, length = 256)
     private String answer;
 
@@ -20,11 +16,15 @@ public class TaskCustomMC extends Task{
     @Column(name = "ChoiceText")
     private List<String> choices;
 
-    public TaskCustomMC(TaskType taskType, Quiz quiz, String taskText, String answer, List<String> choices) {
-        super(taskType, quiz, taskText);
+    public TaskCustomMC() {
+    }
+
+    public TaskCustomMC(TaskType taskType, List<Quiz> quizzes, String taskText, String answer, List<String> choices) {
+        super(taskType, quizzes, taskText);
         this.answer = answer;
         this.choices = choices;
     }
+
 
     public String getAnswer() {
         return answer;

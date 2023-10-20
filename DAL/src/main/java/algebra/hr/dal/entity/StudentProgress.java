@@ -23,6 +23,9 @@ public class StudentProgress {
     @JoinColumn(name = "Username", referencedColumnName = "username")
     private User user;
 
+    public StudentProgress() {
+    }
+
     public StudentProgress(int score, int quizzesSolved, int lessonsPassed, User user) {
         this.score = score;
         this.quizzesSolved = quizzesSolved;

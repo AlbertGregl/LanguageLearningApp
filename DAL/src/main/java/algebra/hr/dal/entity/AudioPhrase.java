@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 public class AudioPhrase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AudioID", updatable = false, nullable = false)
-    private int audioID;
+    @Column(name = "AudioPhraseID", updatable = false, nullable = false)
+    private int audioPhraseID;
 
     @Column(name = "Content", nullable = false, length = 1024)
     private String content;
@@ -35,11 +35,11 @@ public class AudioPhrase {
     }
 
     public int getAudioID() {
-        return audioID;
+        return audioPhraseID;
     }
 
     public void setAudioID(int audioID) {
-        this.audioID = audioID;
+        this.audioPhraseID = audioID;
     }
 
     public String getContent() {
@@ -77,7 +77,7 @@ public class AudioPhrase {
     @Override
     public String toString() {
         return "AudioPhrase{" +
-                "audioID=" + audioID +
+                "audioPhraseID=" + audioPhraseID +
                 ", content='" + content + '\'' +
                 ", duration=" + duration +
                 ", basePhrase=" + basePhrase +

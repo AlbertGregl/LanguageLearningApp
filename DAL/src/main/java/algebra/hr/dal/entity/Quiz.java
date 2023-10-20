@@ -2,6 +2,9 @@ package algebra.hr.dal.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Quiz")
 public class Quiz {
@@ -17,10 +20,27 @@ public class Quiz {
     @JoinColumn(name = "LessonID")
     private Lesson lesson;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Quiz_Task",
+            joinColumns = @JoinColumn(name = "IDQuiz"),
+            inverseJoinColumns = @JoinColumn(name = "TaskID")
+    )
+    private List<Task> tasks = new ArrayList<>();
+
+
+
     //CONSTRUCTOR
     public Quiz(String name, Lesson lesson) {
         this.name = name;
         this.lesson = lesson;
+    }
+
+    public Quiz() {
+    }
+
+    public Quiz(String name) {
+        this.name = name;
     }
 
     public int getIdQuiz() {
@@ -45,6 +65,14 @@ public class Quiz {
 
     public void setLesson(Lesson lesson) {
         this.lesson = lesson;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
