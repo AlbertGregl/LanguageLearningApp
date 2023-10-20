@@ -1,8 +1,10 @@
 package pi.project.languageApp.controller;
 
 import algebra.hr.bll.serviceImplementation.*;
-import algebra.hr.dal.entity.*;
-import algebra.hr.dal.enums.TaskType;
+import algebra.hr.dal.entity.Language;
+import algebra.hr.dal.entity.Phrase;
+import algebra.hr.dal.entity.TaskPhrase;
+import algebra.hr.dal.entity.TranslationPhrase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -63,15 +65,15 @@ public class TestingController {
         //TranslationPhrase translation = new TranslationPhrase(croatianPhrase, englishPhrase);
         //_translationPhraseService.save(translation);
 
-        Quiz quiz = new Quiz("Basics german");
-        _quizService.save(quiz);
-        TranslationPhrase translationPhrase = _translationPhraseService.findById(1);
-
-        TaskType taskType = TaskType.PHRASE;  // Choose the appropriate TaskType enum value
-        String taskText = "Your task text here";
-        TaskPhrase taskPhrase = new TaskPhrase(taskType, quiz, taskText, translationPhrase);
-
-        _taskPhraseService.save(taskPhrase);
+        //Quiz quiz = new Quiz("Basics german");
+        //_quizService.save(quiz);
+        //TranslationPhrase translationPhrase = _translationPhraseService.findById(1);
+//
+        //TaskType taskType = TaskType.PHRASE;  // Choose the appropriate TaskType enum value
+        //String taskText = "Your task text here";
+        //TaskPhrase taskPhrase = new TaskPhrase(taskType, quiz, taskText, translationPhrase);
+//
+        //_taskPhraseService.save(taskPhrase);
 
 
         List<Language> languages = _languageService.findAll();

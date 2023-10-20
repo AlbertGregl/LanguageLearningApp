@@ -13,10 +13,22 @@ public class Quiz {
     @Column(name = "Name", nullable = false, length = 255)
     private String name;
 
-    //CONSTRUCTOR
+    @ManyToOne
+    @JoinColumn(name = "LessonID")
+    private Lesson lesson;
 
-    public Quiz(String name) {
+    //CONSTRUCTOR
+    public Quiz(String name, Lesson lesson) {
         this.name = name;
+        this.lesson = lesson;
+    }
+
+    public int getIdQuiz() {
+        return idQuiz;
+    }
+
+    public void setIdQuiz(int idQuiz) {
+        this.idQuiz = idQuiz;
     }
 
     public String getName() {
@@ -27,11 +39,20 @@ public class Quiz {
         this.name = name;
     }
 
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
     @Override
     public String toString() {
         return "Quiz{" +
                 "idQuiz=" + idQuiz +
                 ", name='" + name + '\'' +
+                ", lesson=" + lesson +
                 '}';
     }
 }

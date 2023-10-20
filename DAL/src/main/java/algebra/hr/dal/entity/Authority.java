@@ -17,7 +17,7 @@ public class Authority {
     @JoinColumn(name = "username", nullable = false)
     private User user;
 
-    @Enumerated(EnumType.STRING) //annotation indicates that the enum will be persisted as a String !
+    @Enumerated(EnumType.STRING) //annotation means that the enum will be persisted as a String !
     @Column(name = "authority", length = 50, nullable = false)
     private Role authority;
 

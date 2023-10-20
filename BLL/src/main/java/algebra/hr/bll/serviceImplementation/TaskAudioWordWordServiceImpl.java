@@ -1,6 +1,6 @@
 package algebra.hr.bll.serviceImplementation;
 
-import algebra.hr.bll.service.TaskAudioService;
+import algebra.hr.bll.service.TaskAudioWordService;
 import algebra.hr.dal.entity.TaskAudioWord;
 import algebra.hr.dal.repository.TaskAudioWordRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
@@ -8,11 +8,11 @@ import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-public class TaskAudioWordServiceImpl implements TaskAudioService {
+public class TaskAudioWordWordServiceImpl implements TaskAudioWordService {
 
     private final TaskAudioWordRepository _audioWordRepository;
 
-    public TaskAudioWordServiceImpl(TaskAudioWordRepository audioWordRepository) {
+    public TaskAudioWordWordServiceImpl(TaskAudioWordRepository audioWordRepository) {
         _audioWordRepository = audioWordRepository;
     }
 
