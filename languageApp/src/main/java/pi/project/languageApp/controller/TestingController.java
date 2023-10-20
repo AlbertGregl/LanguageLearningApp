@@ -1,5 +1,6 @@
 package pi.project.languageApp.controller;
 
+import algebra.hr.bll.service.TaskService;
 import algebra.hr.bll.serviceImplementation.*;
 import algebra.hr.dal.entity.*;
 import algebra.hr.dal.enums.Difficulty;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -25,18 +27,19 @@ public class TestingController {
     private final PhraseServiceImpl _phraseService;
     private final TranslationPhraseServiceImpl _translationPhraseService;
     private final TaskPhraseServiceImpl _taskPhraseService;
+    private final TaskService _taskService;
     private final QuizServiceImpl _quizService;
-
     private final LessonServiceImpl _lessonService;
 
     public TestingController(LanguageServiceImpl languageService, PhraseServiceImpl phraseService
                                 , TranslationPhraseServiceImpl translationPhraseService,
                              TaskPhraseServiceImpl taskPhraseService,
-                             QuizServiceImpl quizService, LessonServiceImpl lessonService) {
+                             TaskService taskService, QuizServiceImpl quizService, LessonServiceImpl lessonService) {
         _languageService = languageService;
         _phraseService = phraseService;
         _translationPhraseService = translationPhraseService;
         _taskPhraseService = taskPhraseService;
+        _taskService = taskService;
         _quizService = quizService;
         _lessonService = lessonService;
     }
@@ -93,8 +96,15 @@ public class TestingController {
         List<Language> languages = _languageService.findAll();
         List<Phrase> phrases = _phraseService.findAll();
         List<TranslationPhrase> translationPhrases = _translationPhraseService.findAll();
-        List<TaskPhrase> taskPhrases = _taskPhraseService.findAll();
+        //List<TaskPhrase> taskPhrases = _taskPhraseService.findAll();
         List<Lesson> lessons = _lessonService.findAll();
+
+        List<Task> allTasks = _taskService.findAll();  // however you're fetching tasks
+
+        List<TaskPhrase> taskPhrases = allTasks.stream()
+                .filter(t -> t instanceof TaskPhrase)
+                .map(t -> (TaskPhrase) t)
+                .collect(Collectors.toList());
 
         // add to the spring model
         theModel.addAttribute("languages", languages);

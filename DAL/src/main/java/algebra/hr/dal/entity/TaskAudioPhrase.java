@@ -1,15 +1,16 @@
 package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.TaskType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 import java.util.List;
 
 @Entity
-@Table(name = "TaskAudioPhrase")
+@DiscriminatorValue("6")
+//@Table(name = "TaskAudioPhrase")
 public class TaskAudioPhrase extends Task{
     public TaskAudioPhrase() {
     }
@@ -20,7 +21,7 @@ public class TaskAudioPhrase extends Task{
     }
 
     @ManyToOne
-    @JoinColumn(name = "AudioPhraseID", nullable = false)
+    @JoinColumn(name = "AudioPhraseID", nullable = true)
     private AudioPhrase audiophrase;
 
     public AudioPhrase getAudiophrase() {

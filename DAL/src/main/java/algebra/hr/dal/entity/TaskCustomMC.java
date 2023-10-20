@@ -6,9 +6,10 @@ import jakarta.persistence.*;
 import java.util.List;
 //https://stackoverflow.com/questions/8969059/difference-between-onetomany-and-elementcollection
 @Entity
-@Table(name = "TaskCustomMC")
+@DiscriminatorValue("3")
+//@Table(name = "TaskCustomMC")
 public class TaskCustomMC extends Task{
-    @Column(name = "Answer", nullable = false, length = 256)
+    @Column(name = "Answer", nullable = true, length = 256)
     private String answer;
 
     @ElementCollection

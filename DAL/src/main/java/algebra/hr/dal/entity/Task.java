@@ -6,9 +6,13 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//https://www.baeldung.com/hibernate-inheritance
+
 @Entity
 @Table(name = "Task")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="discriminator",
+        discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +29,9 @@ public abstract class Task {
     @Column(name = "TaskText", nullable = false, length = 1024)
     private String taskText;
 
+    @Column(name = "discriminator", insertable = false, updatable = false)
+    protected String discriminator;
+
     public Task() {
     }
 
@@ -32,6 +39,10 @@ public abstract class Task {
         this.taskType = taskType;
         this.quizzes = quizzes;
         this.taskText = taskText;
+    }
+
+    public String getTaskTypeIdentifier() {
+        return "Task";
     }
 
     public int getTaskID() {
@@ -65,4 +76,10 @@ public abstract class Task {
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
     }
+
+    //only get
+    public String getDiscriminator() {
+        return discriminator;
+    }
+
 }

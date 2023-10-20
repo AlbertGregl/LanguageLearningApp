@@ -2,13 +2,14 @@ package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.TaskType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 import java.util.List;
 
 @Entity
-@Table(name = "TaskCustom")
+//@Table(name = "TaskCustom")
+@DiscriminatorValue("4")
 public class TaskCustom extends Task{
     public TaskCustom() {
     }
@@ -18,7 +19,7 @@ public class TaskCustom extends Task{
         this.taskAnswer = taskAnswer;
     }
 
-    @Column(name = "TaskAnswer", nullable = false, length = 1024)
+    @Column(name = "TaskAnswer", nullable = true, length = 1024)
     private String taskAnswer;
 
     public String getTaskAnswer() {

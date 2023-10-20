@@ -20,7 +20,7 @@ public class Quiz {
     @JoinColumn(name = "LessonID")
     private Lesson lesson;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "Quiz_Task",
             joinColumns = @JoinColumn(name = "IDQuiz"),

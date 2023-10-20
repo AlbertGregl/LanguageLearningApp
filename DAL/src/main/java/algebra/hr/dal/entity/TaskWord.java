@@ -1,15 +1,16 @@
 package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.TaskType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 import java.util.List;
 
 @Entity
-@Table(name = "TaskWord")
+//@Table(name = "TaskWord")
+@DiscriminatorValue("1")
 public class TaskWord extends Task{
     public TaskWord() {
     }
@@ -20,7 +21,7 @@ public class TaskWord extends Task{
     }
 
     @ManyToOne
-    @JoinColumn(name = "TranslationWordID", nullable = false)
+    @JoinColumn(name = "TranslationWordID", nullable = true)
     private TranslationWord translationWord;
 
     public TranslationWord getTranslationWord() {

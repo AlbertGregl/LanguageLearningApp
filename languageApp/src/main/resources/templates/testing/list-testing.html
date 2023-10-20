@@ -125,7 +125,7 @@
             </div>
         </div>
 
-        <div class="card" style="width: 100%;"> <!-- set the card width to 80% -->
+        <div class="card" style="width: 100%;">
             <!-- Card Header -->
             <h5 class="card-header">Lesson</h5>
 
@@ -138,25 +138,28 @@
                         <h5 class="card-title" th:text="${lesson.difficulty}">Base Phrase Text</h5>
 
                         <!-- Loop over each Quiz in the current lesson's quizzes list -->
-                        <ul th:if="${lesson.quizzes != null && !lesson.quizzes.isEmpty()}">
-                            <div th:each="quiz : ${lesson.quizzes}">
-                                <p th:text="${quiz.name}">Quiz Name Placeholder</p>
+                        <div th:each="quiz : ${lesson.quizzes}">
+                            <ul th:if="${quiz != null && !quiz.tasks.isEmpty()}">
                                 <div th:each="task : ${quiz.tasks}">
                                     <!-- Display common task text -->
                                     <p th:text="${task.taskText}">Task Text Placeholder</p>
 
                                     <!-- Conditional rendering for TaskPhrase -->
                                     <div th:if="${task instanceof T(algebra.hr.dal.entity.TaskPhrase)}">
-                                        <p th:text="${task.translationPhrase.basePhrase.phraseText}">TaskPhrase Text Placeholder</p>
+                                        <!-- Display base phrase -->
+                                        <p th:text="${task.translationPhrase.basePhrase.phraseText}">Base Phrase Placeholder</p>
+                                        <!-- Display the translation phrase (or any other desired property) -->
+                                        <p th:text="${task.translationPhrase.translatedPhrase.phraseText}">Target Phrase Placeholder</p>
                                     </div>
                                 </div>
-                            </div>
-                        </ul>
-
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
+
+    </div>
 
 
     </div>
