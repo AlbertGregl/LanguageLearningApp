@@ -47,4 +47,9 @@ public class LanguageServiceImpl implements LanguageService {
     public void deleteById(int id) {
         _languageRepository.deleteById(id);
     }
+
+    @Override
+    public List<Language> getByKeyword(String keyword) {
+        return _languageRepository.findByKeyword(keyword);
+    }
 }

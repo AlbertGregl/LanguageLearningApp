@@ -1,0 +1,23 @@
+.gradient-custom-2 {
+    background: linear-gradient(to bottom, #F5F5F5,#702cf5);
+}
+
+@media (min-width: 768px) {
+.gradient-form {
+height: 100vh !important;
+}
+}
+@media (min-width: 769px) {
+.gradient-custom-2 {
+border-top-right-radius: .3rem;
+border-bottom-right-radius: .3rem;
+}
+}
+
+.custom-gradient {
+    background: linear-gradient(to bottom, #702cf5, #ffffff);
+}
+
+.create-new-btn{
+    background-color: #702cf5 !important;
+}

@@ -30,11 +30,12 @@ public class TestingController {
     private final TaskService _taskService;
     private final QuizServiceImpl _quizService;
     private final LessonServiceImpl _lessonService;
+    private final UserServiceImpl _userService;
 
     public TestingController(LanguageServiceImpl languageService, PhraseServiceImpl phraseService
                                 , TranslationPhraseServiceImpl translationPhraseService,
                              TaskPhraseServiceImpl taskPhraseService,
-                             TaskService taskService, QuizServiceImpl quizService, LessonServiceImpl lessonService) {
+                             TaskService taskService, QuizServiceImpl quizService, LessonServiceImpl lessonService, UserServiceImpl userService) {
         _languageService = languageService;
         _phraseService = phraseService;
         _translationPhraseService = translationPhraseService;
@@ -42,6 +43,7 @@ public class TestingController {
         _taskService = taskService;
         _quizService = quizService;
         _lessonService = lessonService;
+        _userService = userService;
     }
 
     @GetMapping("/")
@@ -105,6 +107,7 @@ public class TestingController {
                 .filter(t -> t instanceof TaskPhrase)
                 .map(t -> (TaskPhrase) t)
                 .collect(Collectors.toList());
+
 
         // add to the spring model
         theModel.addAttribute("languages", languages);
