@@ -8,8 +8,6 @@
     <title>Streamify++ Genre Info</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -34,18 +32,24 @@
     <div class="container px-4 px-lg-5 mt-5">
         <p class="h4 text-white mb-4">Language Info</p>
 
-        <form action="#" th:action="@{/languages/save}"
-              th:object="${language}" method = "POST">
+        <form action="#" th:action="@{/phrases/save}"
+              th:object="${phrase}" method = "POST">
 
-            <input type="hidden" th:field="*{languageID}">
+            <p th:errors="*{phraseID}"></p>
+            <input type="hidden" th:field="*{phraseID}">
 
-            <input type="text" th:field="*{languageName}"
-                   class="form-control mb-4 w-25" placeholder="Language name">
+            <p th:errors="*{phraseText}"></p>
+            <input type="text" th:field="*{phraseText}"
+                   class="form-control mb-4 w-25" placeholder="Phrase text">
+
+            <p th:errors="*{language}"></p>
+            <select th:field="*{language}" class="form-control mb-4 w-25">
+                <option value="-1">Select Language</option>
+                <option th:each="language : ${languages}" th:value="${language.languageID}" th:text="${language.languageName}"></option>
+            </select>
 
             <br><br>
 
-            <p th:errors="*{languageID}"></p>
-            <p th:errors="*{languageName}"></p>
             <p th:text="${errorMessage}"></p>
 
             <button type="submit" class="btn btn-info col-2">Save</button>
@@ -53,7 +57,7 @@
         </form>
         <br>
         <br>
-        <a th:href="@{/languages/list}">Back to Languages</a>
+        <a th:href="@{/phrases/list}">Back to Languages</a>
     </div>
 </section>
 <!-- Footer-->

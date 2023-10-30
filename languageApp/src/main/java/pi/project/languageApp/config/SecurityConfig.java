@@ -50,6 +50,22 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/languages/save").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/languages/delete").hasRole("ADMIN")
 
+                                //PHRASES
+                                .requestMatchers(HttpMethod.GET, "/phrases/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phrases/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phrases/showFormForAddPhrase").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phrases/showFormForUpdatePhrase").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/phrases/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phrases/delete").hasRole("ADMIN")
+
+                                //WORDS
+                                .requestMatchers(HttpMethod.GET, "/words/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/words/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/words/showFormForAddWord").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/words/showFormForUpdateWord").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/words/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/words/delete").hasRole("ADMIN")
+
                                 //.requestMatchers(HttpMethod.GET, "/users/list").hasRole("ADMIN")
                                 //.requestMatchers(HttpMethod.GET, "/users/listSearch").hasRole("ADMIN")
                                 //.requestMatchers(HttpMethod.GET, "/users/showFormForAddUser").hasRole("ADMIN")

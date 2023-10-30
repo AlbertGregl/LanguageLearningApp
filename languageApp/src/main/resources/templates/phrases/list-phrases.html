@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="/languages/listSearch" method="get">
+                <form action="/phrases/listSearch" method="get">
                     <div class="input-group rounded">
                         <input type="search" name="keyword" class="form-control rounded mr-2" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         <div class="input-group-append">
@@ -51,33 +51,36 @@
     </div>
 
     <div class="container px-4 px-lg-5 mt-5 d-flex flex-column justify-content-center align-items-center">
-        <a th:href="@{/languages/showFormForAddLanguage}" class="btn custom-add-button text-white btn-outline-light btn-lg mb-3 mr-2">
-            <i class="bi bi-plus-circle"></i> Add language
+        <a th:href="@{/phrases/showFormForAddPhrase}" class="btn custom-add-button text-white btn-outline-light btn-lg mb-3 mr-2">
+            <i class="bi bi-plus-circle"></i> Add Phrase
         </a>
 
         <div class="card" style="width: 100%;"> <!-- set the card width to 80% -->
             <!-- Card Header -->
-            <h5 class="card-header">Languages</h5>
+            <h5 class="card-header">Phrases</h5>
 
             <div class="card-body">
                 <!-- Loop over each tag in the tags list -->
                 <ul class="list-group list-group-flush">
-                    <li th:each="language : ${languages}" class="list-group-item">
-                        <!-- Language details -->
-                        <h5 class="card-title" th:text="${language.languageName}">Language Name</h5>
+                    <li th:each="phrase : ${phrases}" class="list-group-item">
+                        <!-- Phrase details -->
+                        <h5 class="card-title" th:text="${phrase.phraseText}">Phrase</h5>
                         <p class="card-text">
-                            <span th:text="${language.languageID}">Language ID</span>
+                            <span th:text="${phrase.language.languageName}">Language</span>
+                        </p>
+                        <p class="card-text">
+                            <span th:text="${phrase.phraseID}">Phrase ID</span>
                         </p>
 
                         <!-- Action buttons -->
                         <div>
                             <!-- Edit Icon -->
-                            <a th:href="@{/languages/showFormForUpdateLanguage(languageId=${language.languageID})}" class="btn custom-gradient text-white btn-sm">
+                            <a th:href="@{/phrases/showFormForUpdatePhrase(phraseId=${phrase.phraseID})}" class="btn custom-gradient text-white btn-sm">
                                 <i class="bi bi-pen"></i>
                             </a>
 
                             <!-- Remove Icon -->
-                            <a th:href="@{/languages/delete(languageId=${language.languageID})}" class="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this language?')) return false">
+                            <a th:href="@{/phrases/delete(phraseId=${phrase.phraseID})}" class="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this word?')) return false">
                                 <i class="bi bi-trash-fill"></i>
                             </a>
                         </div>

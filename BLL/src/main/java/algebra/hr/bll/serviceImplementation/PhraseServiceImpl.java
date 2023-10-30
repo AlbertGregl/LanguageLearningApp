@@ -45,4 +45,9 @@ public class PhraseServiceImpl implements PhraseService {
     public void deleteById(int id) {
         _phraseRepository.deleteById(id);
     }
+
+    @Override
+    public List<Phrase> getByKeyword(String keyword) {
+        return _phraseRepository.findByKeyword(keyword);
+    }
 }

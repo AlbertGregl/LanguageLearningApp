@@ -21,7 +21,7 @@ public class LanguageController {
     }
 
     @GetMapping("/list")
-    public String listGenres(Model theModel) {
+    public String listPhrases(Model theModel) {
 
         List<Language> languages = _languageService.findAll();
 
@@ -41,7 +41,7 @@ public class LanguageController {
         }
         model.addAttribute("languages", languages);
 
-        return "genres/list-languages";
+        return "phrases/list-languages";
     }
 
     @GetMapping("/showFormForAddLanguage")
@@ -91,10 +91,10 @@ public class LanguageController {
 
     @GetMapping("/delete")
     public String delete(@RequestParam("languageId") int theId){
-        //delete the genre
+        //delete the language
         _languageService.deleteById(theId);
 
-        //redirect to the /genres/list
+        //redirect to the /languages/list
         return "redirect:/languages/list";
     }
 }
