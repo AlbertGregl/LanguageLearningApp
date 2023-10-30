@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LemurLingo Login Page</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/login-page.css}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<section class="h-100 custom-gradient" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="/images/logo++.png"
+                                         style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Login</h4>
+                                </div>
+
+                                <div th:if="${param.error}">
+                                    <i class="text-danger">Sorry! You entered invalid username/password.</i>
+                                </div>
+
+                                <div th:if="${param.logoutManual}">
+                                    <i>You have been logged out.</i>
+                                </div>
+
+                                <form action="#" th:action="@{/security/security-login}"
+                                      method="POST">
+                                    <p>Please login to your account</p>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="form2Example11" name="username" class="form-control"
+                                               placeholder="Please enter your username" />
+                                        <label class="form-label" for="form2Example11">Username</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="form2Example22" name="password" class="form-control"
+                                               placeholder="Please enter your password" />
+                                        <label class="form-label" for="form2Example22">Password</label>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <button type="submit" class="btn text-white create-new-btn" role="button">Login</button>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <a th:href="@{/security/showFormCreateUser}">
+                                            <button type="button" class="btn text-white create-new-btn" role="button">Create account</button>
+                                        </a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                <h4 class="mb-4">LemurLingo:</h4>
+                                <p class="small mb-0">Welcome to LemurLingo, a revolutionary language learning app that
+                                    promises to redefine the way you master new languages. Whether you're a
+                                    complete beginner or looking to brush up on your fluency,
+                                    LemurLingo has got you covered.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
