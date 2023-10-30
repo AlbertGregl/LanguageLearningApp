@@ -32,32 +32,40 @@
     <div class="container px-4 px-lg-5 mt-5">
         <p class="h4 text-white mb-4">Language Info</p>
 
-        <form action="#" th:action="@{/phrases/save}"
-              th:object="${phrase}" method = "POST">
+        <form action="#" th:action="@{/translationPhrases/save}"
+              th:object="${translation}" method = "POST">
 
-            <p th:errors="*{phraseID}"></p>
-            <input type="hidden" th:field="*{phraseID}">
+            <p th:errors="*{basePhrase}"></p>
+            <input type="text" th:field="*{basePhrase}"
+                   class="form-control mb-4 w-25" placeholder="Base Phrase">
 
-            <p th:errors="*{phraseText}"></p>
-            <input type="text" th:field="*{phraseText}"
-                   class="form-control mb-4 w-25" placeholder="Phrase text">
-
-            <p th:errors="*{language}"></p>
-            <select th:field="*{language}" class="form-control mb-4 w-25">
-                <option value="-1">Select Language</option>
+            <p th:errors="*{baseLanguage}"></p>
+            <select th:field="*{baseLanguage}" class="form-control mb-4 w-25">
+                <option value="-1">Select Base Language</option>
                 <option th:each="language : ${languages}" th:value="${language.languageID}" th:text="${language.languageName}"></option>
             </select>
 
-            <br><br>
+            <p th:errors="*{translatedPhrase}"></p>
+            <input type="text" th:field="*{translatedPhrase}"
+                   class="form-control mb-4 w-25" placeholder="Translated Phrase">
+
+            <p th:errors="*{translatedLanguage}"></p>
+            <select th:field="*{translatedLanguage}" class="form-control mb-4 w-25">
+                <option value="-1">Select Translated Language</option>
+                <option th:each="language : ${languages}" th:value="${language.languageID}" th:text="${language.languageName}"></option>
+            </select>
+
 
             <p th:text="${errorMessage}"></p>
 
             <button type="submit" class="btn btn-info col-2">Save</button>
 
+            <br><br><br>
+
         </form>
         <br>
         <br>
-        <a th:href="@{/translationPhrases/list}">Back to TranslationPhrases</a>
+        <a th:href="@{/phrases/list}">Back to Languages</a>
     </div>
 </section>
 <!-- Footer-->

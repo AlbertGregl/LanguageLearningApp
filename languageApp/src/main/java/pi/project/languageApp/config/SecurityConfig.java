@@ -41,6 +41,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/security/showFormCreateUser").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/security/saveUser").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/testing/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/error").permitAll()
 
                                 //LANGUAGES
                                 .requestMatchers(HttpMethod.GET, "/languages/list").hasRole("ADMIN")
@@ -65,6 +66,14 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/words/showFormForUpdateWord").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/words/save").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/words/delete").hasRole("ADMIN")
+
+                                //TRANSLATION PHRASE
+                                .requestMatchers(HttpMethod.GET, "/translationPhrases/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationPhrases/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationPhrases/showFormForAddTranslationPhrase").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationPhrases/showFormForUpdateTranslationPhrase").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/translationPhrases/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationPhrases/delete").hasRole("ADMIN")
 
                                 //.requestMatchers(HttpMethod.GET, "/users/list").hasRole("ADMIN")
                                 //.requestMatchers(HttpMethod.GET, "/users/listSearch").hasRole("ADMIN")
