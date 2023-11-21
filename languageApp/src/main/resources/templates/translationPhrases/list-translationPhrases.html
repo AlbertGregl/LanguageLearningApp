@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>LemurLingo Languages</title>
+    <title>LemurLingo TranslationPhrases</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Favicon-->
@@ -33,22 +33,6 @@
 
 <!-- Section-->
 <section class="py-5 tags-section-gradient">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <form action="/translationPhrases/listSearch" method="get">
-                    <div class="input-group rounded">
-                        <input type="search" name="keyword" class="form-control rounded mr-2" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-white">
-                                <i class="bi bi-search bi-search-icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <div class="container px-4 px-lg-5 mt-5 d-flex flex-column justify-content-center align-items-center">
         <a th:href="@{/translationPhrases/showFormForAddTranslationPhrase}" class="btn custom-add-button text-white btn-outline-light btn-lg mb-3 mr-2">
@@ -62,7 +46,7 @@
             <div class="card-body">
                 <!-- Loop over each tp in the tags list -->
                 <ul class="list-group list-group-flush">
-                    <li th:each="translationPhrase : ${translationPhrases}" class="list-group-item">
+                    <li th:each="translationPhrase : ${translations}" class="list-group-item">
                         <!-- Phrase details -->
                         <h5 class="card-title" th:text="${translationPhrase.basePhrase.phraseText}">Base Phrase</h5>
                         <p class="card-text">
@@ -78,12 +62,12 @@
                         <!-- Action buttons -->
                         <div>
                             <!-- Edit Icon -->
-                            <a th:href="@{/translationPhrases/showFormForUpdateTranslationPhrase(translationPhraseId=${translationPhrase.translationPhraseId})}" class="btn custom-gradient text-white btn-sm">
+                            <a th:href="@{/translationPhrases/showFormForUpdateTranslationPhrase(translationPhraseId=${translationPhrase.phraseTranslationID})}" class="btn custom-gradient text-white btn-sm">
                                 <i class="bi bi-pen"></i>
                             </a>
 
                             <!-- Remove Icon -->
-                            <a th:href="@{/translationPhrases/delete(translationPhraseId=${translationPhrase.translationPhraseID})}" class="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this translation?')) return false">
+                            <a th:href="@{/translationPhrases/delete(translationPhraseId=${translationPhrase.phraseTranslationID})}" class="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this translation?')) return false">
                                 <i class="bi bi-trash-fill"></i>
                             </a>
                         </div>

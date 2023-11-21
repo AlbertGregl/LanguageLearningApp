@@ -75,14 +75,50 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/translationPhrases/save").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/translationPhrases/delete").hasRole("ADMIN")
 
-                                //.requestMatchers(HttpMethod.GET, "/users/list").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.GET, "/users/listSearch").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.GET, "/users/showFormForAddUser").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.GET, "/users/showFormForUpdateUser").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.POST, "/users/save").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.GET, "/users/delete").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.GET, "/users/showFormForAddAdmin").hasRole("ADMIN")
-                                //.requestMatchers(HttpMethod.POST, "/users/saveAdmin").hasRole("ADMIN")
+                                //TRANSLATION WORD
+                                .requestMatchers(HttpMethod.GET, "/translationWords/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationWords/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationWords/showFormForAddTranslationWord").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationWords/showFormForUpdateTranslationWord").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/translationWords/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/translationWords/delete").hasRole("ADMIN")
+
+                                //TASK-WORD
+                                .requestMatchers(HttpMethod.GET, "/wordTasks/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/wordTasks/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/wordTasks/showFormForAddWordTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/wordTasks/showFormForUpdateWordTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/wordTasks/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/wordTasks/delete").hasRole("ADMIN")
+
+                                //TASK-PHRASE
+                                .requestMatchers(HttpMethod.GET, "/phraseTasks/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phraseTasks/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phraseTasks/showFormForAddPhraseTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phraseTasks/showFormForUpdatePhraseTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/phraseTasks/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/phraseTasks/delete").hasRole("ADMIN")
+
+                                //TASK-CUSTOM
+                                .requestMatchers(HttpMethod.GET, "/customTasks/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/customTasks/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/customTasks/showFormForAddCustomTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/customTasks/showFormForUpdateCustomTask").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/customTasks/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/customTasks/delete").hasRole("ADMIN")
+
+                                //FORUM-POSTS
+                                .requestMatchers(HttpMethod.GET, "/forums/list").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/forums/listSearch").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/forums/showFormForAddPost").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/forums/showFormForUpdatePost").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/forums/showPost/**").authenticated()
+                                .requestMatchers(HttpMethod.POST, "/forums/addComment").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/forums/save").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/forums/delete").hasRole("ADMIN")
+
+                                //GAMES/TASKS
+                                .requestMatchers(HttpMethod.GET, "/games/phraseGame").hasRole("STUDENT")
                 )
                 .formLogin(form ->
                         form

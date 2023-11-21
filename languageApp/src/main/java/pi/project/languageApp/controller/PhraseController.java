@@ -74,8 +74,10 @@ public class PhraseController {
     }
 
     @PostMapping("/save")
-    public String saveGenre(@Valid @ModelAttribute("phrase") Phrase phrase, BindingResult bindingResult, Model model) {
+    public String savePhrase(@Valid @ModelAttribute("phrase") Phrase phrase, BindingResult bindingResult, Model model) {
 
+        List<Language> languages = _languageService.findAll();
+        model.addAttribute("languages", languages);
         // Check for validation errors
         if (bindingResult.hasErrors()) {
             return "phrases/phrase-form";

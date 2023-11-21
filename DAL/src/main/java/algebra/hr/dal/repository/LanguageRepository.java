@@ -13,6 +13,7 @@ public interface LanguageRepository extends JpaRepository<Language, Integer> {
     //jpa gives us all the basic CRUD operations that we need
 
     //Custom query
-    @Query(value = "select * from Language l where l.LanguageName like %:keyword%", nativeQuery = true)
+    @Query(value = "SELECT * FROM Language l WHERE l.languageName LIKE :keyword", nativeQuery = true)
     List<Language> findByKeyword(@Param("keyword") String keyword);
+
 }

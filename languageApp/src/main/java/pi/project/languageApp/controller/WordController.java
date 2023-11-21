@@ -62,6 +62,8 @@ public class WordController {
     @PostMapping("/save")
     public String saveGenre(@Valid @ModelAttribute("word") Word word, BindingResult bindingResult, Model model) {
 
+        List<Language> languages = _languageService.findAll();
+        model.addAttribute("languages", languages);
         // Check for validation errors
         if (bindingResult.hasErrors()) {
             return "words/word-form";

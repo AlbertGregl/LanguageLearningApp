@@ -44,4 +44,24 @@ public class WordServiceImpl implements WordService {
     public void deleteById(int id) {
         _wordRepository.deleteById(id);
     }
+
+    @Override
+    public List<Word> getByKeyword(String keyword) {
+        return _wordRepository.findByKeyword(keyword);
+    }
+
+    @Override
+    public Word findByWordText(String wordText) {
+        List<Word> allDBWords = _wordRepository.findAll();
+
+        Optional<Word> optionalWord = allDBWords.stream()
+                .filter(word -> word.getWordText().equals(wordText.trim()))
+                .findFirst();
+
+        if (optionalWord.isPresent()) {
+            return optionalWord.get();
+        } else {
+            throw new CustomNotFoundException("Word does not exist in the database!");
+        }
+    }
 }

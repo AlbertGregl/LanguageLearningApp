@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLA</title>
+    <title>Lemur Lingo</title>
 
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,44 +18,39 @@
 
         <div class="left-main-div">
 
-            <div class="title">Language Learning App</div>
+            <div class="title">Lemur Lingo</div>
 
             <img class="img-cloud" src="/images/cloud.png" alt="">
 
             <img class="img-leemur" src="/images/leemur.svg" alt="">
 
-            <div class="txt-cloud">(type of exercise)Prevedi rečenicu!</div>
+            <div class="txt-cloud" th:text="${taskText}"></div>
 
 
         </div>
 
         <div class="right-main-div">
-    
-            <div class="question-div">(exercise text) Ja sam velik lik.</div>
-    
+
+            <!-- Use Thymeleaf to dynamically populate the exercise text -->
+            <div class="question-div" th:text="${exerciseText}">(exercise text)</div>
+
             <div class="answer-div" id="answer-line"></div>
-    
+
             <div class="choises-div" id="choises-div">
-    
-                <button class="answer-btn">I</button>
-                <button class="answer-btn">am</button>
-                <button class="answer-btn">a</button>
-                <button class="answer-btn">big</button>
-                <button class="answer-btn">guy</button>
-    
+                <!-- Use Thymeleaf to dynamically generate choice buttons -->
+                <button class="answer-btn" th:each="choice : ${choices}" th:text="${choice}">Choice</button>
+
             </div>
-    
+
             <div class="controls-div">
-    
-                <button class="contorl-btn" id="control-btn-left">Skip</button>
-                <button class="contorl-btn" id="control-btn-right">Check</button>
-    
+                <a class="contorl-btn" id="control-btn-left" th:href="@{/games/phraseGame}">Skip</a>
+                <a class="contorl-btn" id="control-btn-right">Check</a>
             </div>
 
         </div>
 
     </div>
 
-    <script src="/static/js/index.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

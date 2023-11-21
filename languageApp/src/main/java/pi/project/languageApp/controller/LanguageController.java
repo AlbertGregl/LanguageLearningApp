@@ -41,7 +41,7 @@ public class LanguageController {
         }
         model.addAttribute("languages", languages);
 
-        return "phrases/list-languages";
+        return "languages/list-languages";
     }
 
     @GetMapping("/showFormForAddLanguage")
@@ -66,7 +66,7 @@ public class LanguageController {
     }
 
     @PostMapping("/save")
-    public String saveGenre(@Valid @ModelAttribute("language") Language language, BindingResult bindingResult, Model model) {
+    public String saveLanguage(@Valid @ModelAttribute("language") Language language, BindingResult bindingResult, Model model) {
 
         // Check for validation errors
         if (bindingResult.hasErrors()) {

@@ -1,18 +1,17 @@
 .custom-gradient {
-   background-color: #702cf5 !important;
+   background-color: #17a2b8 !important; /* Teal */
 }
 
 .custom-gradient-content{
-    background-color: #F5F5F5 !important;
+    background-color: #F5F5F5 !important; /* Light grey */
 }
 
 .custom-table-content{
-    background: rgb(112,44,245);
-    background: linear-gradient(0deg, rgba(112,44,245,1) 0%, rgba(253,187,45,1) 100%);
+    background: linear-gradient(0deg, #17a2b8 0%, #6c757d 100%); /* Teal to dark grey */
 }
 
 .custom-add-button{
-    background-color: #D6C8FF;
+    background-color: #D1ECF1; /* Light teal */
 }
 
 .bi-search-icon {
@@ -20,11 +19,11 @@
 }
 
 .tags-section-gradient{
-   background: linear-gradient(to bottom, #702cf5, #ffffff);
+   background: linear-gradient(to bottom, #17a2b8, #ffffff); /* Teal to white */
 }
 
 .tags-cards-gradient{
-   background-color: #f5f5f5 !important;
+   background-color: #f5f5f5 !important; /* Light grey */
 }
 
 .navbar-nav{
@@ -37,7 +36,7 @@
 }
 
 .selected {
-    border: 4px solid #007bff;
+    border: 4px solid #28a745; /* Green */
 }
 
 html, body {

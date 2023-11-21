@@ -4,10 +4,12 @@ import algebra.hr.bll.service.ForumPostService;
 import algebra.hr.dal.entity.ForumPost;
 import algebra.hr.dal.repository.ForumPostRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ForumPostServiceImpl implements ForumPostService {
 
     private final ForumPostRepository _forumPostRepository;

@@ -50,4 +50,19 @@ public class PhraseServiceImpl implements PhraseService {
     public List<Phrase> getByKeyword(String keyword) {
         return _phraseRepository.findByKeyword(keyword);
     }
+
+    @Override
+    public Phrase findByPhraseText(String phraseText) {
+        List<Phrase> allDBPhrases = _phraseRepository.findAll();
+
+        Optional<Phrase> optionalPhrase = allDBPhrases.stream()
+                .filter(phrase -> phrase.getPhraseText().equals(phraseText.trim()))
+                .findFirst();
+
+        if (optionalPhrase.isPresent()) {
+            return optionalPhrase.get();
+        } else {
+            throw new CustomNotFoundException("Phrase does not exist in the database!");
+        }
+    }
 }

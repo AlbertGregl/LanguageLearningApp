@@ -1,6 +1,8 @@
 package algebra.hr.dal.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Phrase")
@@ -12,10 +14,12 @@ public class Phrase {
     private int phraseID;
 
     @Column(name = "PhraseText", nullable = false, columnDefinition = "NVARCHAR(1024)")
+    @NotEmpty(message = "Phrase is required")
     private String phraseText;
 
     @ManyToOne
     @JoinColumn(name = "LanguageID", nullable = false)
+    @NotNull(message = "Language is required")
     private Language language;  //each phrase is associated with a language
 
     // CONSTRUCTORS

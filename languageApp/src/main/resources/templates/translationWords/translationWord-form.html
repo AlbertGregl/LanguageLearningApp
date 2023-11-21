@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>LemurLingo Languages</title>
+    <title>Lemur Lingo Translation Words</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -34,24 +32,43 @@
     <div class="container px-4 px-lg-5 mt-5">
         <p class="h4 text-white mb-4">Language Info</p>
 
-        <form action="#" th:action="@{/languages/save}"
-              th:object="${language}" method = "POST">
+        <form action="#" th:action="@{/translationWords/save}"
+              th:object="${translation}" method = "POST">
 
-            <input type="hidden" th:field="*{languageID}">
+            <p th:errors="*{translationID}"></p>
+            <input type="hidden" th:field="*{translationID}">
 
-            <p th:errors="*{languageName}"></p>
-            <input type="text" th:field="*{languageName}"
-                   class="form-control mb-4 w-25" placeholder="Language name">
+            <p th:errors="*{baseWord}"></p>
+            <input type="text" th:field="*{baseWord}"
+                   class="form-control mb-4 w-25" placeholder="Base Word">
 
-            <br><br>
+            <p th:errors="*{baseLanguage}"></p>
+            <select th:field="*{baseLanguage}" class="form-control mb-4 w-25">
+                <option value="-1">Select Base Language</option>
+                <option th:each="language : ${languages}" th:value="${language.languageID}" th:text="${language.languageName}"></option>
+            </select>
+
+            <p th:errors="*{translatedWord}"></p>
+            <input type="text" th:field="*{translatedWord}"
+                   class="form-control mb-4 w-25" placeholder="Translated Word">
+
+            <p th:errors="*{translatedLanguage}"></p>
+            <select th:field="*{translatedLanguage}" class="form-control mb-4 w-25">
+                <option value="-1">Select Translated Language</option>
+                <option th:each="language : ${languages}" th:value="${language.languageID}" th:text="${language.languageName}"></option>
+            </select>
+
+
             <p th:text="${errorMessage}"></p>
 
             <button type="submit" class="btn btn-info col-2">Save</button>
 
+            <br><br><br>
+
         </form>
         <br>
         <br>
-        <a th:href="@{/languages/list}">Back to Languages</a>
+        <a th:href="@{/translationWords/list}">Back to Translations</a>
     </div>
 </section>
 <!-- Footer-->

@@ -19,7 +19,6 @@ public class TaskWord extends Task{
         super(taskType, quizzes, taskText);
         this.translationWord = translationWord;
     }
-
     @ManyToOne
     @JoinColumn(name = "TranslationWordID", nullable = true)
     private TranslationWord translationWord;

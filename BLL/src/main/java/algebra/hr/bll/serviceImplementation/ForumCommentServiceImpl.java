@@ -4,10 +4,12 @@ import algebra.hr.bll.service.ForumCommentService;
 import algebra.hr.dal.entity.ForumComment;
 import algebra.hr.dal.repository.ForumCommentRepository;
 import hr.algebra.utils.notFoundErrors.CustomNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ForumCommentServiceImpl implements ForumCommentService {
     private final ForumCommentRepository _forumCommentRepository;
 
@@ -39,5 +41,10 @@ public class ForumCommentServiceImpl implements ForumCommentService {
     @Override
     public void deleteById(int id) {
         _forumCommentRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ForumComment> findByForumPostId(int forumPostId) {
+        return _forumCommentRepository.findByForumPost_ForumPostID(forumPostId);
     }
 }

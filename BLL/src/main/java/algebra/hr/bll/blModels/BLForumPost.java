@@ -1,38 +1,21 @@
-package algebra.hr.dal.entity;
+package algebra.hr.bll.blModels;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity
-@Table(name="ForumPost")
-public class ForumPost {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ForumPostID")
+public class BLForumPost {
     private int forumPostID;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "forum_post_receivers",
-            joinColumns = @JoinColumn(name = "forum_post_id"),
-            inverseJoinColumns = @JoinColumn(name = "receiver_username")
-    )
-    private Set<User> receivers;
-
-    @Column(name = "Content", nullable = false)
+    private Set<String> receivers;
     @NotEmpty(message = "Content is required")
     private String content;
-
-    @Column(name = "TimeStamp", nullable = false)
     private LocalDateTime timeStamp;
 
-    public ForumPost() {
+    public BLForumPost() {
     }
 
-    public ForumPost(Set<User> receivers, String content, LocalDateTime timeStamp) {
+    public BLForumPost(Set<String> receivers, String content, LocalDateTime timeStamp) {
         this.receivers = receivers;
         this.content = content;
         this.timeStamp = timeStamp;
@@ -46,11 +29,11 @@ public class ForumPost {
         this.forumPostID = forumPostID;
     }
 
-    public Set<User> getReceivers() {
+    public Set<String> getReceivers() {
         return receivers;
     }
 
-    public void setReceivers(Set<User> receivers) {
+    public void setReceivers(Set<String> receivers) {
         this.receivers = receivers;
     }
 
@@ -72,7 +55,7 @@ public class ForumPost {
 
     @Override
     public String toString() {
-        return "ForumPost{" +
+        return "BLForumPost{" +
                 "forumPostID=" + forumPostID +
                 ", receivers=" + receivers +
                 ", content='" + content + '\'' +

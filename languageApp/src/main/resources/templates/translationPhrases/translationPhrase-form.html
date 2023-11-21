@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Streamify++ Genre Info</title>
+    <title>LemurLingo TranslationPhrases</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap icons-->
@@ -34,6 +34,9 @@
 
         <form action="#" th:action="@{/translationPhrases/save}"
               th:object="${translation}" method = "POST">
+
+            <p th:errors="*{translationID}"></p>
+            <input type="hidden" th:field="*{translationID}">
 
             <p th:errors="*{basePhrase}"></p>
             <input type="text" th:field="*{basePhrase}"
@@ -65,7 +68,7 @@
         </form>
         <br>
         <br>
-        <a th:href="@{/phrases/list}">Back to Languages</a>
+        <a th:href="@{/translationPhrases/list}">Back to Translations</a>
     </div>
 </section>
 <!-- Footer-->

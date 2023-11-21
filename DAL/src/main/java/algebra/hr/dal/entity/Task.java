@@ -2,6 +2,7 @@ package algebra.hr.dal.entity;
 
 import algebra.hr.dal.enums.TaskType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public abstract class Task {
     private List<Quiz> quizzes = new ArrayList<>();
 
     @Column(name = "TaskText", nullable = false, length = 1024)
+    @NotEmpty(message = "Task text is required")
     private String taskText;
 
     @Column(name = "discriminator", insertable = false, updatable = false)

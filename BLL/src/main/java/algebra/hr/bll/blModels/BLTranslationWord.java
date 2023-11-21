@@ -3,24 +3,24 @@ package algebra.hr.bll.blModels;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 
-public class BLTranslationPhrase {
+public class BLTranslationWord {
     private int translationID;
-    @NotEmpty(message = "Base phrase is required")
-    private String basePhrase;
+    @NotEmpty(message = "Base word is required")
+    private String baseWord;
     @Min(value = 0, message = "Language is required!")
     private int baseLanguage;
-    @NotEmpty(message = "Translated phrase is required")
-    private String translatedPhrase;
-    @Min(value = 0, message = "Language is required!")
+    @NotEmpty(message = "Translated word is required")
+    private String translatedWord;
+    @Min(value = 0, message = "Language is required")
     private int translatedLanguage;
 
-    public BLTranslationPhrase() {
+    public BLTranslationWord() {
     }
 
-    public BLTranslationPhrase(String basePhrase, int baseLanguage, String translatedPhrase, int translatedLanguage) {
-        this.basePhrase = basePhrase;
+    public BLTranslationWord(String baseWord, int baseLanguage, String translatedWord, int translatedLanguage) {
+        this.baseWord = baseWord;
         this.baseLanguage = baseLanguage;
-        this.translatedPhrase = translatedPhrase;
+        this.translatedWord = translatedWord;
         this.translatedLanguage = translatedLanguage;
     }
 
@@ -32,12 +32,12 @@ public class BLTranslationPhrase {
         this.translationID = translationID;
     }
 
-    public String getBasePhrase() {
-        return basePhrase;
+    public String getBaseWord() {
+        return baseWord;
     }
 
-    public void setBasePhrase(String basePhrase) {
-        this.basePhrase = basePhrase;
+    public void setBaseWord(String baseWord) {
+        this.baseWord = baseWord;
     }
 
     public int getBaseLanguage() {
@@ -48,12 +48,12 @@ public class BLTranslationPhrase {
         this.baseLanguage = baseLanguage;
     }
 
-    public String getTranslatedPhrase() {
-        return translatedPhrase;
+    public String getTranslatedWord() {
+        return translatedWord;
     }
 
-    public void setTranslatedPhrase(String translatedPhrase) {
-        this.translatedPhrase = translatedPhrase;
+    public void setTranslatedWord(String translatedWord) {
+        this.translatedWord = translatedWord;
     }
 
     public int getTranslatedLanguage() {
@@ -66,11 +66,11 @@ public class BLTranslationPhrase {
 
     @Override
     public String toString() {
-        return "BLTranslationPhrase{" +
+        return "BLTranslationWord{" +
                 "translationID=" + translationID +
-                ", basePhrase='" + basePhrase + '\'' +
+                ", baseWord='" + baseWord + '\'' +
                 ", baseLanguage=" + baseLanguage +
-                ", translatedPhrase='" + translatedPhrase + '\'' +
+                ", translatedWord='" + translatedWord + '\'' +
                 ", translatedLanguage=" + translatedLanguage +
                 '}';
     }

@@ -1,23 +1,24 @@
 .gradient-custom-2 {
-    background: linear-gradient(to bottom, #F5F5F5,#702cf5);
+    background: linear-gradient(to bottom, #F5F5F5, #17a2b8); /* Light grey to teal */
 }
 
 @media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
+    .gradient-form {
+        height: 100vh !important;
+    }
 }
-}
+
 @media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
-}
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
 }
 
 .custom-gradient {
-    background: linear-gradient(to bottom, #702cf5, #ffffff);
+    background: linear-gradient(to bottom, #17a2b8, #ffffff); /* Teal to white */
 }
 
 .create-new-btn{
-    background-color: #702cf5 !important;
+    background-color: #17a2b8 !important; /* Teal */
 }
