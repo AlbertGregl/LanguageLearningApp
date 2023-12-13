@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>LemurLingo Forum</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Custom CSS for Styling -->
+    <link rel="stylesheet" th:href="@{/css/llapp.css}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#navbar-placeholder").load("/sharedElements/navbar.html");
+    });
+</script>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Forum Post -->
+            <article class="post mb-4">
+                <header class="post-header mb-3">
+                    <h2 class="post-title">Forum Post</h2>
+                    <p class="text-muted" th:text="${post.timeStamp}"></p>
+                </header>
+                <section class="post-content">
+                    <p th:text="${post.content}"></p>
+                </section>
+            </article>
+
+            <!-- Comments Section -->
+            <section class="comments">
+                <h3 class="comments-title mb-3">Comments</h3>
+                <div th:each="comment : ${comments}" class="comment mb-3">
+                    <header class="comment-header">
+                        <strong th:text="${comment.usernamePoster}"></strong>
+                        <span class="text-muted" th:text="${comment.timeStamp}"></span>
+                    </header>
+                    <p th:text="${comment.content}"></p>
+                </div>
+            </section>
+
+            <!-- Add Comment Form -->
+            <form th:action="@{/forums/addComment}" method="post" class="add-comment-form mt-4">
+                <input type="hidden" name="postId" th:value="${post.forumPostID}">
+                <div class="form-group">
+                    <label for="commentContent">Your Comment</label>
+                    <textarea class="form-control" id="commentContent" name="content" rows="4" placeholder="Share your thoughts..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post Comment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="py-5 custom-gradient">
+    <div class="container">
+        <p class="m-0 text-center text-white">Tim01 &copy; LemurLingo 2023</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

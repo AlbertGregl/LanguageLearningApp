@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>LemurLingo Phrase Tasks</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" th:href="@{/css/llapp.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/e05be2ffcc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="d-flex flex-column">
+<!-- Navigation-->
+<!-- Mush have placeholder present on every page(jQuery needs to load before bootstrap) -->
+<div id="navbar-placeholder"></div>
+<script>
+    $(document).ready(function(){
+        $("#navbar-placeholder").load("/sharedElements/navbar.html");
+    });
+</script>
+
+<!-- Section-->
+<section class="py-5 tags-section-gradient">
+
+    <div class="container px-4 px-lg-5 mt-5 d-flex flex-column justify-content-center align-items-center">
+        <a th:href="@{/phraseTasks/showFormForAddPhraseTask}" class="btn custom-add-button text-white btn-outline-light btn-lg mb-3 mr-2">
+            <i class="bi bi-plus-circle"></i> Add Task
+        </a>
+
+        <div class="card" style="width: 100%;"> <!-- set the card width to 80% -->
+            <!-- Card Header -->
+            <h5 class="card-header">Phrase Tasks</h5>
+
+            <div class="card-body">
+                <!-- Loop over each tp in the tags list -->
+                <ul class="list-group list-group-flush">
+                    <li th:each="task : ${tasks}" class="list-group-item">
+                        <!-- Word details -->
+                        <h5 class="card-title" th:text="${task.translationPhrase.basePhrase.phraseText}">Base Phrase</h5>
+                        <p class="card-text">
+                            <span th:text="${task.translationPhrase.basePhrase.language.languageName}"> Base Language</span>
+                        </p>
+
+                        <h5 class="card-title" th:text="${task.translationPhrase.translatedPhrase.phraseText}">Translated Phrase</h5>
+                        <p class="card-text">
+                            <span th:text="${task.translationPhrase.translatedPhrase.language.languageName}">Translated Language</span>
+                        </p>
+
+                        <h5>TASK: </h5>
+                        <p class="card-text">
+                            <span th:text="${task.taskText}">Task:</span>
+                        </p>
+
+
+                        <!-- Action buttons -->
+                        <div>
+                            <!-- Edit Icon -->
+                            <a th:href="@{/phraseTasks/showFormForUpdatePhraseTask(taskID=${task.taskID})}" class="btn custom-gradient text-white btn-sm">
+                                <i class="bi bi-pen"></i>
+                            </a>
+
+                            <!-- Remove Icon -->
+                            <a th:href="@{/phraseTasks/delete(taskID=${task.taskID})}" class="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this task?')) return false">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- Footer-->
+<footer class="py-5 custom-gradient mt-auto">
+    <div class="container"><p class="m-0 text-center text-white">Tim01 &copy; LemurLingo 2023</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+</body>
+</html>
