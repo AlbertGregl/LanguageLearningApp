@@ -29,7 +29,9 @@ public class LanguageServiceTest {
 
     @Test
     public void testFindAll() {
-        when(_languageRepository.findAll()).thenReturn(Arrays.asList(new Language(), new Language()));
+        when(_languageRepository.findAll()).thenReturn(Arrays.asList(
+                new Language("Spanish"),
+                new Language("English")));
         List<Language> languages = _languageService.findAll();
         assertEquals(2, languages.size());
     }

@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,29 +31,42 @@ public class UserServiceTest {
 
     @Test
     public void testFindAllUsers() {
-        // Create the user
+        // create the user
         User userAdmin = new User();
         userAdmin.setUsername("HardoHardich");
         userAdmin.setPassword(_securityService.doBCryptPassEncoding("password123"));
         userAdmin.setEnabled(true);
 
-        // Create the student
+        // create the student
         User userStudent = new User();
         userStudent.setUsername("Tvrtko94");
-        userStudent.setPassword(_securityService.doBCryptPassEncoding("password2019"));
+        userStudent.setPassword(_securityService.doBCryptPassEncoding("password91"));
         userStudent.setEnabled(false);
 
-        when(_userRepository.findAll()).thenReturn(Arrays.asList(
-                new User(),
-                userStudent,
-                userAdmin));
+        // mock repos response
+        when(_userRepository.findAll()).thenReturn(Arrays.asList(userAdmin, userStudent));
+
         List<User> users = _userService.findAll();
-        assertEquals(3, users.size());
+
+        assertEquals(2, users.size());
+        assertTrue(users.containsAll(Arrays.asList(userAdmin, userStudent)));
     }
 
     @Test
+    public void testFindByUsernameExistingUser() {
+        String username = "existingUser";
+        User user = new User();
+        user.setUsername(username);
+
+        when(_userRepository.findAll()).thenReturn(List.of(user));
+
+        User foundUser = _userService.findByUsername(username);
+        assertEquals(username, foundUser.getUsername());
+    }
+
+
+    @Test
     public void testSaveAdmin() {
-        // Create the user details
         String userNameAdmin = "HardoHardich";
         String passwordAdmin = "password123";
 
@@ -65,7 +79,6 @@ public class UserServiceTest {
 
     @Test
     public void testSaveStudent() {
-        // Create the user details
         String userNameStudent = "TvrtkoTvrtkich";
         String passwordStudent = "password123";
 

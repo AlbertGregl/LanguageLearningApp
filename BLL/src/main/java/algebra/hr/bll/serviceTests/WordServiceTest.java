@@ -28,7 +28,10 @@ public class WordServiceTest {
 
     @Test
     public void testFindAll() {
-        when(_wordRepository.findAll()).thenReturn(Arrays.asList(new Word(), new Word()));
+        Language lang = new Language("German");
+        when(_wordRepository.findAll()).thenReturn(Arrays.asList(
+                new Word("Nach", lang),
+                new Word("Wasser", lang)));
         List<Word> words = _wordService.findAll();
         assertEquals(2, words.size());
     }
@@ -56,7 +59,6 @@ public class WordServiceTest {
     @Test
     public void testDeleteById() {
         int id = 1;
-
         _wordService.deleteById(id);
         verify(_wordRepository, times(1)).deleteById(id);
     }

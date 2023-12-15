@@ -1,5 +1,6 @@
 package algebra.hr.bll.serviceTests;
 
+import algebra.hr.bll.serviceImplementation.LanguageServiceImpl;
 import algebra.hr.bll.serviceImplementation.PhraseServiceImpl;
 import algebra.hr.dal.entity.Language;
 import algebra.hr.dal.entity.Phrase;
@@ -25,12 +26,17 @@ public class PhraseServiceTest {
     private PhraseRepository _phraseRepository;
     @InjectMocks
     private PhraseServiceImpl _phraseService;
+    @InjectMocks
+    private LanguageServiceImpl _languageService;
 
     @Test
     public void testFindAll() {
-        when(_phraseRepository.findAll()).thenReturn(Arrays.asList(new Phrase(), new Phrase(),new Phrase()));
+        Language lang = new Language("German");
+        when(_phraseRepository.findAll()).thenReturn(Arrays.asList(
+                new Phrase("Guten tag", lang),
+                new Phrase("Auf viedersehn", lang)));
         List<Phrase> phrases = _phraseService.findAll();
-        assertEquals(3, phrases.size());
+        assertEquals(2, phrases.size());
     }
 
     @Test
