@@ -28,7 +28,7 @@ public class LanguageServiceTest {
     private LanguageServiceImpl _languageService;
 
     @Test
-    public void testFindAll() {
+    public void testFindAllLanguages() {
         when(_languageRepository.findAll()).thenReturn(Arrays.asList(
                 new Language("Spanish"),
                 new Language("English")));
@@ -37,7 +37,7 @@ public class LanguageServiceTest {
     }
 
     @Test
-    public void testFindById() {
+    public void testFindLanguageById() {
         int id = 1;
         when(_languageRepository.findById(id)).thenReturn(Optional.of(new Language()));
         Language language = _languageService.findById(id);
@@ -45,7 +45,7 @@ public class LanguageServiceTest {
     }
 
     @Test
-    public void testSave() {
+    public void testLanguageSave() {
         Language language = new Language("Croatian");
         when(_languageRepository.save(any(Language.class))).thenReturn(language);
 
@@ -55,7 +55,7 @@ public class LanguageServiceTest {
     }
 
     @Test
-    public void testDeleteById() {
+    public void testDeleteLanguageById() {
         int id = 1;
 
         _languageService.deleteById(id);

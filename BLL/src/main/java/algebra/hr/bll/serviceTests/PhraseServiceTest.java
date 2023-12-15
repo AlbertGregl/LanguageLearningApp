@@ -30,7 +30,7 @@ public class PhraseServiceTest {
     private LanguageServiceImpl _languageService;
 
     @Test
-    public void testFindAll() {
+    public void testFindAllPhrases() {
         Language lang = new Language("German");
         when(_phraseRepository.findAll()).thenReturn(Arrays.asList(
                 new Phrase("Guten tag", lang),
@@ -40,7 +40,7 @@ public class PhraseServiceTest {
     }
 
     @Test
-    public void testFindById() {
+    public void testFindPhraseById() {
         int id = 1;
         when(_phraseRepository.findById(id)).thenReturn(Optional.of(new Phrase()));
         Phrase phrase = _phraseService.findById(id);
@@ -48,7 +48,7 @@ public class PhraseServiceTest {
     }
 
     @Test
-    public void testSave() {
+    public void testPhraseSave() {
         Language lang = new Language("Spanish");
         Phrase phrase = new Phrase("Como es tas shorty" ,lang);
 
@@ -60,7 +60,7 @@ public class PhraseServiceTest {
     }
 
     @Test
-    public void testDeleteById() {
+    public void testDeletePhraseById() {
         int id = 1;
 
         _phraseService.deleteById(id);

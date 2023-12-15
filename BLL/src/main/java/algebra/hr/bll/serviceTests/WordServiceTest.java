@@ -27,7 +27,7 @@ public class WordServiceTest {
     private WordServiceImpl _wordService;
 
     @Test
-    public void testFindAll() {
+    public void testFindAllWords() {
         Language lang = new Language("German");
         when(_wordRepository.findAll()).thenReturn(Arrays.asList(
                 new Word("Nach", lang),
@@ -37,7 +37,7 @@ public class WordServiceTest {
     }
 
     @Test
-    public void testFindById() {
+    public void testFindWordById() {
         int id = 1;
         when(_wordRepository.findById(id)).thenReturn(Optional.of(new Word()));
         Word word = _wordService.findById(id);
@@ -45,7 +45,7 @@ public class WordServiceTest {
     }
 
     @Test
-    public void testSave() {
+    public void testSaveWord() {
         Language lang = new Language("Spanish");
         Word word = new Word("Ola" ,lang);
 
@@ -57,7 +57,7 @@ public class WordServiceTest {
     }
 
     @Test
-    public void testDeleteById() {
+    public void testDeleteWordById() {
         int id = 1;
         _wordService.deleteById(id);
         verify(_wordRepository, times(1)).deleteById(id);
